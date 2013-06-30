@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+
+  "name": "URL mapper",
+  "description": "This extension allow URL mapper",
+  "version": "1.0",
+  "permissions":["storage",
+     "webNavigation", 
+     "tabs"
+    ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "options_page": "options.html"
+}
