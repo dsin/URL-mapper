@@ -34,7 +34,7 @@ redirectURL's Variable
 -------------------------
 <dl>
   <dt>[URL]</dt> <dd>the current URL</dd>
-  <dt>[prevURL]</dt> <dd>the user entered URL 
+  <dt>[prevURL]</dt> <dd>the user entered URL. 
   In case of, user enter URL that contains redirect inside that page, the [prevURL] will be the URL before redirect.
 
   For example, the page http://a.com has redirect script inside his own page to http://b.com.
