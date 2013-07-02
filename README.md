@@ -21,11 +21,13 @@ Installation
    For example, if you web browser to load `http://google.com` when you enter `http://yahoo.com`, you can configure like this:
 
    currentURL : `http://yahoo.com`
+   
    redirectURL : `http://google.com`
 
    or another practical example: 
 
    currentURL : `http://58.97.5.29/annouce/court.html`
+
    redirectURL : `http://mirrorrr.appspot.com/[prevURLwoHttp]`
 
 redirectURL's Variable
