@@ -18,7 +18,7 @@ Installation
 5. click URL-mapper's Options
    This is where the mapper can be set.
 
-   For example, if you web browser to load `http://google.com` when you enter `http://yahoo.com`, you can configure like this:
+   For example, if you want web browser to load `http://google.com` when you enter `http://yahoo.com`, you can configure like this:
 
    currentURL : `http://yahoo.com`
    
