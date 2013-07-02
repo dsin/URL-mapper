@@ -37,9 +37,9 @@ redirectURL's Variable
   <dt>[prevURL]</dt> <dd>the user entered URL 
   In case of, user enter URL that contains redirect inside that page, the [prevURL] will be the URL before redirect.
 
-  For example, the page `http://a.com` has redirect script inside his own page to `http://b.com`.
+  For example, the page http://a.com has redirect script inside his own page to http://b.com.
 
-    When user enter `http://a.com`. The [URL] will be `http://b.com` and the [prevURL] will be `http://a.com`</dd>
+    When user enter http://a.com. The [URL] will be http://b.com and the [prevURL] will be http://a.com</dd>
 
-  <dt>[prevURLwoHttp]</dt> <dd>prevURL but without http. i.e. if [prevURL] is `http://google.com`, [prevURLwoHttp] will be `google.com`.</dd>
+  <dt>[prevURLwoHttp]</dt> <dd>prevURL but without http. i.e. if [prevURL] is http://google.com, [prevURLwoHttp] will be google.com.</dd>
 </dl>
