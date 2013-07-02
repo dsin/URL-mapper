@@ -41,5 +41,5 @@ redirectURL's Variable
 
     When user enter `http://a.com`. The [URL] will be `http://b.com` and the [prevURL] will be `http://a.com`</dd>
 
-  <dt>[prevURLwoHttp]</dt> <dd>prevURL but without http. i.e. if [prevURL] is `http://google.com`, [prevURLwoHttp] is `google.com`.</dd>
+  <dt>[prevURLwoHttp]</dt> <dd>prevURL but without http. i.e. if [prevURL] is `http://google.com`, [prevURLwoHttp] will be `google.com`.</dd>
 </dl>
