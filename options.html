@@ -33,8 +33,23 @@
     </style>
 <body>
 
+<div>
+<h2>example</h2>
+<p>currentURL : http://58.97.5.29/annouce/court.html</p>
+<p>redirectURL : http://mirrorrr.appspot.com/[prevURLwoHttp]</p></div>
+
+<div><h2>redirectURL variable</h2>
+<h3>[URL]</h3>
+<p>the current URL</p>
+<h3>[prevURL]</h3>
+<p>the user entered URL. In case of, user enter URL that contains redirect inside that page, the [prevURL] will be the URL before redirect. For example, the page http://a.com has redirect script inside his own page to http://b.com. When user enter http://a.com. The [URL] will be http://b.com and the [prevURL] will be http://a.com</p>
+<h3>[prevURLwoHttp]</h3>
+<p>prevURL but without http. i.e. if [prevURL] is http://google.com, [prevURLwoHttp] will be google.com</p>
+</h2></div>
+
 <div id="htmlerror"></div>
 
+<h1>URL mapper</h1>
 <form>
   <label for="currentURL">URL</label>
   <input type="text" id="currentURL" name="currentURL" size="100"/><br/>
@@ -46,6 +61,8 @@
 </form>
 
 <div id="tableArea"></table>
+
+
 
 <script src="messages.js"></script>
 <script src="escapehtmlentities.js"></script>
