@@ -18,13 +18,17 @@ var URLmappingForm = {
 
     var o = check_required(this.currentURL(), 'currentURL');
     if(o.status == 'error')
-        messages.append(o.errormessage);
+        messages.push(o.errormessage);
 
     var o = check_required(this.redirectURL(), 'redirectURL');
     if(o.status == 'error')
-        messages.append(o.errormessage);
+        messages.push(o.errormessage);
 
-    return messages;
+    if(messages.length){
+        return {'status': 'error', 'messages': messages};
+    } else {
+        return {'status': 'ok'};
+    }
   }
 }
 

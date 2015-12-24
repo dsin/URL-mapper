@@ -1,22 +1,29 @@
 var optionsPage = {
      save : function() {
-      var messages = URLmappingForm.validate();  
-      if(messages.length){
-        messages.show();
-        messages.clear();
-        return
-      }
+      var o = URLmappingForm.validate();  
+      if(o.status=='error'){
+        console.log('error');
+        var errors = o.messages.join("<br/>");
+        var htmlerror = document.getElementById('htmlerror');
+        if (htmlerror){
+            htmlerror.innerHTML = "<div class='warning'>"+
+                errors+"</div>";
+        }
+      } else {
+          console.log('ok');
+          document.getElementById('htmlerror').innerHTML = '';
 
-      chrome.storage.sync.get('URLmapping', function(items){
-        var URLmapping = items['URLmapping'];
-        if(!URLmapping)
-          URLmapping = {};
-        URLmapping[URLmappingForm.currentURL()] = URLmappingForm.redirectURL();
-        chrome.storage.sync.set({'URLmapping': URLmapping}, function() {
-          optionsPage.list();
-          URLmappingForm.clear();
-        });
-      });
+          chrome.storage.sync.get('URLmapping', function(items){
+            var URLmapping = items['URLmapping'];
+            if(!URLmapping)
+              URLmapping = {};
+            URLmapping[URLmappingForm.currentURL()] = URLmappingForm.redirectURL();
+            chrome.storage.sync.set({'URLmapping': URLmapping}, function() {
+              optionsPage.list();
+              URLmappingForm.clear();
+            });
+          });
+      }
     },
 
     getThisId : function(){
