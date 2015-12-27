@@ -53,11 +53,11 @@ var optionsPage = {
     },
 
     getEditButtonId: function(currentURL){
-      return 'edit-'+escapeHtmlEntities(currentURL)
+      return 'edit-'+util.escapeHtmlEntities(currentURL);
     },
 
     getRemoveButtonId : function(currentURL){
-      return 'remove-'+escapeHtmlEntities(currentURL)
+      return 'remove-'+util.escapeHtmlEntities(currentURL);
     },
 
  
