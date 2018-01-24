@@ -2,69 +2,43 @@
 <html>
   <head>
     <title>URL Mapper Option</title>
-    <style>
-      body{
-          font-family:Arial, Helvetica, sans-serif; 
-          font-size:13px;
-      }
-      .info, .success, .warning, .error, .validation {
-          border: 1px solid;
-          margin: 10px 0px;
-          padding:15px 10px 15px 50px;
-          background-repeat: no-repeat;
-          background-position: 10px center;
-      }
-      .info {
-          color: #00529B;
-          background-color: #BDE5F8;
-      }
-      .success {
-          color: #4F8A10;
-          background-color: #DFF2BF;
-      }
-      .warning {
-          color: #9F6000;
-          background-color: #FEEFB3;
-      }
-      .error {
-          color: #D8000C;
-          background-color: #FFBABA;
-      }
-    </style>
+    <link rel='stylesheet' href='css/bootstrap-4.0.0.min.css'/>
 <body>
 
 <div>
-<h2>example</h2>
-<p>currentURL : http://58.97.5.29/annouce/court.html</p>
-<p>redirectURL : http://mirrorrr.appspot.com/[prevURLwoHttp]</p></div>
 
-<div><h2>redirectURL variable</h2>
+<div><h2>redirect to URL variable</h2>
 <h3>[URL]</h3>
 <p>the current URL</p>
 <h3>[prevURL]</h3>
-<p>the user entered URL. In case of, user enter URL that contains redirect inside that page, the [prevURL] will be the URL before redirect. For example, the page http://a.com has redirect script inside his own page to http://b.com. When user enter http://a.com. The [URL] will be http://b.com and the [prevURL] will be http://a.com</p>
+<p>the user entered URL. In case of, user enter URL that contains redirect inside that page, the [prevURL] will be the URL before redirect.</p>
+<p>For example, the page http://a.com has redirect script inside his own page to http://b.com. </p><p>When user enter http://a.com. The [URL] will be http://b.com and the [prevURL] will be http://a.com</p>
 <h3>[prevURLwoHttp]</h3>
 <p>prevURL but without http. i.e. if [prevURL] is http://google.com, [prevURLwoHttp] will be google.com</p>
 </h2></div>
 
-<div id="htmlerror"></div>
+<div id='htmlerror' class="alert alert-warning" style="display: none;"></div>
 
 <h1>URL mapper</h1>
 <form>
-  <label for="currentURL">URL</label>
-  <input type="text" id="currentURL" name="currentURL" size="100"/><br/>
+  <label for='currentURL'>from URL</label>
+  <p>
+    <input type='text' id='currentURL' name='currentURL' size='100' placeholder='ex. http://58.97.5.29/annouce/court.html' />
+  </p>
 
-  <label for="redirectURL">redirect URL</label>
-  <input type="text" id="redirectURL" name="redirectURL" size="100"/><br/>
+  <label for='redirectURL'>redirect to URL</label>
+  <p>
+    <input type='text' id='redirectURL' name='redirectURL' size='100' placeholder='ex. http://mirrorrr.appspot.com/[prevURLwoHttp]'/>
+  </p>
 
-  <input type="button" id="save" value="save"/>
+  <input type='button' id='save' value='save'/>
 </form>
 
-<div id="tableArea"></table>
+<div id='tableArea'></table>
 
-<script src="util.js"></script>
-<script src="URLmapperForm.js"></script>
-<script src="options.js"></script>
+<script src='js/jquery-1.11.0.min.js'></script>
+<script src='js/URLmapperForm.js'></script>
+<script src='js/options.js'></script>
 
 </body>
 </html>
