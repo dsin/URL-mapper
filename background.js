@@ -1,4 +1,4 @@
-var before_navigate_url = '';
+var before_navigate_url = undefined;
 
 chrome.webNavigation.onBeforeNavigate.addListener(function(details) {
   before_navigate_url = details.url;
@@ -13,9 +13,9 @@ function processWebNavigation(details){
         var URLmapping = items['URLmapping'],
             redirectURL = URLmapping[current_url];
         if(redirectURL){
-          redirectURL = redirectURL.replace('[URL]', current_url);
-          redirectURL = redirectURL.replace('[prevURL]', before_navigate_url);
-          redirectURL = redirectURL.replace('[prevURLwoHttp]', before_navigate_url.substring(before_navigate_url.indexOf('//')+2));
+          redirectURL = redirectURL.replace('[currentURL]', current_url);
+          redirectURL = redirectURL.replace('[beforeRedirectURL]', before_navigate_url || current_url);
+          redirectURL = redirectURL.replace('[beforeRedirectURLwoHttp]', before_navigate_url.substring(before_navigate_url.indexOf('//')+2));
           chrome.tabs.update(details.tabId, {url: redirectURL});
         }
       });

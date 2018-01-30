@@ -3,42 +3,73 @@
   <head>
     <title>URL Mapper Option</title>
     <link rel='stylesheet' href='css/bootstrap-4.0.0.min.css'/>
-<body>
-
-<div>
-
-<div><h2>redirect to URL variable</h2>
-<h3>[URL]</h3>
-<p>the current URL</p>
-<h3>[prevURL]</h3>
-<p>the user entered URL. In case of, user enter URL that contains redirect inside that page, the [prevURL] will be the URL before redirect.</p>
-<p>For example, the page http://a.com has redirect script inside his own page to http://b.com. </p><p>When user enter http://a.com. The [URL] will be http://b.com and the [prevURL] will be http://a.com</p>
-<h3>[prevURLwoHttp]</h3>
-<p>prevURL but without http. i.e. if [prevURL] is http://google.com, [prevURLwoHttp] will be google.com</p>
-</h2></div>
-
-<div id='htmlerror' class="alert alert-warning" style="display: none;"></div>
-
-<h1>URL mapper</h1>
-<form>
-  <label for='currentURL'>from URL</label>
+<body ng-app="App" ng-controller="FormController">
+  <h2>
+    redirect to URL variable
+  </h2>
+  <strong>
+    [currentURL]
+  </strong>,
+  <strong>
+    [beforeRedirectURL]
+  </strong>
   <p>
-    <input type='text' id='currentURL' name='currentURL' size='100' placeholder='ex. http://58.97.5.29/annouce/court.html' />
+    If user enter URL that contains redirect inside that page, the [beforeRedirectURL] will be the URL before redirect.
   </p>
-
-  <label for='redirectURL'>redirect to URL</label>
   <p>
-    <input type='text' id='redirectURL' name='redirectURL' size='100' placeholder='ex. http://mirrorrr.appspot.com/[prevURLwoHttp]'/>
+    For example, the page http://a.com has redirect script inside his own page to http://b.com.
   </p>
+  <p>
+    When user enter http://a.com. The [currentURL] will be http://b.com and the [beforeRedirectURL] will be http://a.com
+  </p>
+  <strong>
+    [beforeRedirectURLwoHttp]
+  </strong>
+  <p>
+    i.e. If [beforeRedirectURL] is http://google.com, [beforeRedirectURLwoHttp] will be google.com
+  </p>
+  </div>
 
-  <input type='button' id='save' value='save'/>
-</form>
+  <h1>URL mapper</h1>
+  <form name="mappingForm" ng-submit="submitForm(mappingForm)">
+    <label for='currentURL'>from URL</label>
+    <p>
+      <input type='url' id='currentURL' name='currentURL' size='100' placeholder='ex. http://58.97.5.29/annouce/court.html' ng-model="currentURL" required/>
+      <div ng-if="mappingForm.currentURL.$dirty" ng-messages="mappingForm.currentURL.$error" role="alert" class="text-danger">
+        <div ng-message="required">You did not enter a field</div>
+        <div ng-message="url">Please enter URL</div>
+      </div>
+    </p>
 
-<div id='tableArea'></table>
+    <label for='redirectURL'>redirect to URL</label>
+    <p>
+      <input type='url' id='redirectURL' name='redirectURL' size='100' placeholder='ex. http://mirrorrr.appspot.com/[beforeRedirectURLwoHttp]' ng-model="redirectURL" required/>
+      <div ng-if="mappingForm.redirectURL.$dirty" ng-messages="mappingForm.redirectURL.$error" role="alert" class="text-danger">
+        <div ng-message="required">You did not enter a field</div>
+        <div ng-message="url">Please enter URL</div>
+      </div>
+    </p>
 
-<script src='js/jquery-1.11.0.min.js'></script>
-<script src='js/URLmapperForm.js'></script>
-<script src='js/options.js'></script>
+    <input type='submit' id='save' value='save'/>
+    <input type='button' id='clear' value='clear' ng-click="clear()"/>
+  </form>
 
+  <table>
+    <th></th>
+    <th>URL</th>
+    <th>redirectTo</th>
+
+    <tr ng-repeat="(fromURL, redirectURL) in URLmapping">
+      <td><input type="button" name="edit" value="edit" ng-click="edit(fromURL)"/>
+          <input type="button" name="delete" value="delete" ng-click="delete(fromURL)"/>
+      </td>
+      <td>{{ fromURL }}</td>
+      <td>{{ redirectURL }}</td>
+    </tr>
+  </table>
+
+  <script src='js/angular-1.6.7.min.js'></script>
+  <script src='js/angular-messages.min.js'></script>
+  <script src='js/options.js'></script>
 </body>
 </html>
